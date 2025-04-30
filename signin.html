@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - iLovePDF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom Animations */
+        @keyframes slideIn {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slide-in {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        .input-field:focus {
+            outline: none;
+            ring: 2px solid #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html">
+                    <img src="https://via.placeholder.com/150x50?text=Logo" alt="iLovePDF Logo" class="h-10">
+                </a>
+            </div>
+            <div class="flex space-x-4">
+                <a href="signin.html" class="text-gray-700 hover:text-blue-600">Sign In</a>
+                <a href="signup.html" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sign In Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4 flex justify-center">
+            <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+                <h2 class="text-3xl font-bold text-center mb-6 animate-slide-in">Sign In</h2>
+                <form class="space-y-6">
+                    <div class="animate-slide-in" style="animation-delay: 0.2s;">
+                        <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+                        <div class="relative">
+                            <i class="fas fa-envelope text-blue-600 absolute left-3 top-3"></i>
+                            <input type="email" id="email" name="email" class="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+                    <div class="animate-slide-in" style="animation-delay: 0.4s;">
+                        <label for="password" class="block text-gray-700 font-semibold mb-2">Password</label>
+                        <div class="relative">
+                            <i class="fas fa-lock text-blue-600 absolute left-3 top-3"></i>
+                            <input type="password" id="password" name="password" class="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600" placeholder="Enter your password" required>
+                        </div>
+                    </div>
+                    <div class="animate-slide-in" style="animation-delay: 0.6s;">
+                        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">Sign In</button>
+                    </div>
+                </form>
+                <p class="text-center text-gray-600 mt-4 animate-slide-in" style="animation-delay: 0.8s;">
+                    Don't have an account? <a href="signup.html" class="text-blue-600 hover:underline">Sign Up</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400">© 2025 iLovePDF. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
