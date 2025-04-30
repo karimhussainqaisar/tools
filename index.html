@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iLovePDF - Free Online PDF Tools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom Animations */
+        @keyframes slideIn {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slide-in {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        /* Flip Animation for Tool Cards */
+        .tool-card {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+        .tool-card:hover {
+            transform: translateY(-10px);
+        }
+        .tool-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+        .tool-card:hover .tool-card-inner {
+            transform: rotateY(180deg);
+        }
+        .tool-card-front, .tool-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .tool-card-front {
+            background: linear-gradient(to bottom right, #eff6ff, #dbeafe);
+        }
+        .tool-card-back {
+            background: linear-gradient(to bottom right, #dbeafe, #bfdbfe);
+            transform: rotateY(180deg);
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Counter Animation */
+        .counter {
+            transition: all 2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://via.placeholder.com/150x50?text=Logo" alt="iLovePDF Logo" class="h-10">
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#tools" class="text-gray-700 hover:text-blue-600">Tools</a>
+                <a href="#features" class="text-gray-700 hover:text-blue-600">Features</a>
+                <a href="#pricing" class="text-gray-700 hover:text-blue-600">Pricing</a>
+                <a href="#contact" class="text-gray-700 hover:text-blue-600">Contact</a>
+            </div>
+            <div class="flex space-x-4">
+                <a href="signin.html" class="text-gray-700 hover:text-blue-600">Sign In</a>
+                <a href="signup.html" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-slide-in">Free Online PDF Tools</h1>
+            <p class="text-lg md:text-xl mb-6 animate-slide-in" style="animation-delay: 0.2s;">
+                Merge, split, compress, convert, and edit your PDFs with ease!
+            </p>
+            <a href="#tools" class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition animate-slide-in" style="animation-delay: 0.4s;">
+                Get Started
+            </a>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Our PDF Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                <!-- Tool Card 1 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-file-pdf text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Merge PDF</h3>
+                            <p class="text-gray-600">Combine multiple PDF files into one in seconds.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Merge PDFs effortlessly!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 2 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-cut text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Split PDF</h3>
+                            <p class="text-gray-600">Extract or separate pages from your PDF files.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Split PDFs with ease!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 3 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-compress text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Compress PDF</h3>
+                            <p class="text-gray-600">Reduce file size while maintaining quality.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Compress PDFs quickly!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 4 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-file-word text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">PDF to Word</h3>
+                            <p class="text-gray-600">Convert PDFs to editable Word documents.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Convert to Word now!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 5 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-image text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">PDF to JPG</h3>
+                            <p class="text-gray-600">Extract images or convert pages to JPG.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Convert to JPG easily!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 6 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-lock text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Protect PDF</h3>
+                            <p class="text-gray-600">Add passwords to secure your PDF files.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Secure your PDFs!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 7 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-unlock text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Unlock PDF</h3>
+                            <p class="text-gray-600">Remove passwords from protected PDFs.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Unlock PDFs now!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 8 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-file-excel text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">PDF to Excel</h3>
+                            <p class="text-gray-600">Convert PDFs to editable Excel spreadsheets.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Convert to Excel!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 9 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-file-powerpoint text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">PDF to PowerPoint</h3>
+                            <p class="text-gray-600">Turn PDFs into PowerPoint presentations.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Convert to PowerPoint!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 10 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-file-image text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">JPG to PDF</h3>
+                            <p class="text-gray-600">Convert images to PDF documents.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Create PDFs from JPG!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 11 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-file-alt text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Word to PDF</h3>
+                            <p class="text-gray-600">Convert Word documents to PDF format.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Convert Word to PDF!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 12 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-table text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Excel to PDF</h3>
+                            <p class="text-gray-600">Transform Excel files into PDFs.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Convert Excel to PDF!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 13 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-slideshare text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">PowerPoint to PDF</h3>
+                            <p class="text-gray-600">Convert presentations to PDF files.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Convert PPT to PDF!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 14 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-watermark text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Add Watermark</h3>
+                            <p class="text-gray-600">Add text or image watermarks to PDFs.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Watermark your PDFs!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 15 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-eraser text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Remove Watermark</h3>
+                            <p class="text-gray-600">Remove watermarks from PDF documents.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Remove watermarks!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 16 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-redo text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Rotate PDF</h3>
+                            <p class="text-gray-600">Rotate pages in your PDF files.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Rotate PDFs easily!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 17 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-file-signature text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Sign PDF</h3>
+                            <p class="text-gray-600">Add digital signatures to your PDFs.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Sign PDFs securely!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 18 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-file-import text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">HTML to PDF</h3>
+                            <p class="text-gray-600">Convert HTML pages to PDF format.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Convert HTML to PDF!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 19 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-eye text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">PDF Viewer</h3>
+                            <p class="text-gray-600">View PDF files directly in your browser.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">View PDFs online!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 20 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-text-height text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Edit PDF Text</h3>
+                            <p class="text-gray-600">Modify text directly in PDF documents.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Edit PDF text now!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 21 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-image text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Add Images to PDF</h3>
+                            <p class="text-gray-600">Insert images into your PDF files.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Add images to PDFs!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 22 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-file-import text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Import Annotations</h3>
+                            <p class="text-gray-600">Add comments or annotations to PDFs.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Annotate PDFs!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 23 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-file-export text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl Goddamn! It’s already 180 degrees!
+                            <p class="text-gray-600">Export PDF content to other formats.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Export PDFs now!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 24 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-search text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Search PDF</h3>
+                            <p class="text-gray-600">Find text within PDF documents.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Search PDFs easily!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 25 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-file-contract text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">PDF Forms</h3>
+                            <p class="text-gray-600">Create or fill interactive PDF forms.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Create PDF forms!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 26 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-highlighter text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Highlight PDF</h3>
+                            <p class="text-gray-600">Highlight text or areas in PDFs.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Highlight PDFs!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 27 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-trash text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Delete Pages</h3>
+                            <p class="text-gray-600">Remove unwanted pages from PDFs.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Delete PDF pages!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 28 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-sort-numeric-up text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Number Pages</h3>
+                            <p class="text-gray-600">Add page numbers to your PDFs.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Number PDF pages!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 29 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-file-archive text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Archive PDF</h3>
+                            <p class="text-gray-600">Create compressed archives of PDFs.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Archive PDFs!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</p></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Card 30 -->
+                <div class="tool-card h-64">
+                    <div class="tool-card-inner">
+                        <div class="tool-card-front text-center">
+                            <i class="fas fa-file-code text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">PDF to HTML</h3>
+                            <p class="text-gray-600">Convert PDFs to HTML webpages.</p>
+                        </div>
+                        <div class="tool-card-back text-center">
+                            <p class="text-gray-600 font-semibold">Convert PDF to HTML!</p>
+                            <a href="#" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infographics Section -->
+    <section id="features" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-12">Why Choose iLovePDF?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <i class="fas fa-users text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2"><span class="counter" data-target="20">0</span>M+</h                    <p class="text-gray-600">Users Worldwide</p>
+                </div>
+                <div>
+                    <i class="fas fa-file-alt text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2"><span class="counter" data-target="100">0</span>M+</h3>
+                    <p class="text-gray-600">PDFs Processed</p>
+                </div>
+                <div>
+                    <i class="fas fa-shield-alt text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2">100%</h3>
+                    <p class="text-gray-600">Secure & Private</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">iLovePDF</h4>
+                    <p class="text-gray-400">Your go-to solution for all PDF needs. Free, fast, and secure.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tools</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Merge PDF</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Split PDF</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Compress PDF</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">About</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-gray-400">
+                © 2025 iLovePDF. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Counter Animation -->
+    <script>
+        // Counter Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const counters = document.querySelectorAll('.counter');
+            const speed = 200; // Animation speed
+
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 10);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+
+                // Trigger counter when in view
+                const observer = new IntersectionObserver(entries => {
+                    if (entries[0].isIntersecting) {
+                        updateCount();
+                        observer.disconnect();
+                    }
+                }, { threshold: 0.5 });
+
+                observer.observe(counter);
+            });
+
+            // Add slide-in animation on scroll
+            const elements = document.querySelectorAll('.animate-slide-in');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-slide-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            elements.forEach(element => observer.observe(element));
+        });
+    </script>
+</body>
+</html>
